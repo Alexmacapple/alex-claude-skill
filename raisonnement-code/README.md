@@ -120,7 +120,8 @@ Le juste milieu entre « dis-moi ce que tu penses » (trop libre, 78 % de préci
 
 ## Référence scientifique
 
-Ugare & Chandra, « Agentic Code Reasoning », Meta 2026
+Shubham Ugare & Satish Chandra, « Agentic Code Reasoning », Meta, mars 2026
 - arXiv : https://arxiv.org/abs/2603.01896
+- Version HTML : https://arxiv.org/html/2603.01896v2
 - Résultats : 78 % → 93 % (patch), 87 % (code QA), +5-12 pp (localisation de bugs)
 - Méthode : semi-formal reasoning avec certificats de preuve structurés
