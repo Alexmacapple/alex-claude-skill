@@ -2,7 +2,7 @@
 
 **Objet** : Contrat JSON qui définit la structure et les contraintes que tout style guide de projet doit respecter pour être utilisable avec le skill `/prompt-image`.
 
-**Statut** : v1.0  
+**Statut** : v1.1  
 **Date** : 7 avril 2026
 
 ---
@@ -56,6 +56,9 @@ Le skill `/prompt-image` charge ce fichier au démarrage, puis utilise ses valeu
 | `negative_core` | string | Prompt négatif de base, applicable à tous les concepts si le générateur supporte les négatifs. Utilisé pour pré-remplir Prompt4. | `"photorealism, heavy shading, cartoon exaggeration, anime style, speech bubbles, text in image"` |
 | `format.aspect_ratio_variants` | array[string] | Ratios alternatifs acceptés si le contexte l'impose (ex: `["1:1", "4:3"]` en addition au `"16:9"` principal). Le skill propose le principal par défaut. | `["1:1", "4:3"]` |
 | `quality_checkpoints` | object | Points de référence pour auto-évaluation du score qualité en Étape 4. Clés recommandées : `style_markers` (array : ce qui prouve le style est bien appliqué), `scene_markers` (array : ce qui prouve la scène est bien traduite), `feasibility_risks` (array : éléments à surveiller par générateur). Documentaire, utilisé pour entraîner l'évaluation du skill. | (voir détail ci-après) |
+| `signature` | object | **Bloc prescriptif** : marqueurs obsessionnels injectes dans le prompt pour creer une identite reconnaissable. Distinct de `visual_signature` (qui est descriptif/documentaire). Voir section **Signature et plectrum**. | (voir détail ci-après) |
+| `rendering.tension_mechanics` | array[string] | Vocabulaire d'evenements visuels disponibles pour le concept. Le pipeline choisit la mecanique la plus adaptee. Exemples : `"rupture"`, `"transfer"`, `"emergence"`, `"collapse"`, `"resonance"`. Donne de l'attaque et du mouvement narratif aux images. | `["rupture: geometry breaking along stress lines", "transfer: energy pulse through junction"]` |
+| `model_adaptation` | object | Strategies d'injection par famille de generateur. Cles recommandees par moteur : `strategy`, `risks`, `tip`. Permet d'adapter le meme preset a plusieurs generateurs. | (voir détail ci-après) |
 
 ---
 
@@ -123,6 +126,56 @@ Structure recommandée :
 
 ---
 
+## Signature et plectrum
+
+### Distinction `visual_signature` vs `signature`
+
+| Cle | Role | Injection dans le prompt | Public |
+|-----|------|--------------------------|--------|
+| `visual_signature` | **Descriptif** : marqueurs visuels pour relecteurs humains et documentation | Non (informatif) | Equipe, relecteurs |
+| `signature` | **Prescriptif** : marqueurs obsessionnels injectes dans le prompt | Oui (etape 4, style compression) | Generateur d'images |
+
+Les deux peuvent coexister. `visual_signature` est obligatoire (schema L0). `signature` est optionnelle et ajoute une couche d'identite personnelle.
+
+### Structure de `signature`
+
+```json
+"signature": {
+  "seed_phrase": "string",      // Constitution visuelle en 1 phrase (~30 mots max)
+  "manifesto": "string",       // Version poetique/manifeste (optionnel, documentaire)
+  "marks": {
+    "geometry": "string",      // Motif geometrique obsessionnel
+    "light": "string",         // Discipline lumiere
+    "composition": "string",   // Regle compositionnelle
+    "strike": "string"         // Point de plectrum (optionnel)
+  },
+  "tyrannical_rule": "string"  // Regle unique non-negociable que chaque image doit respecter
+}
+```
+
+### Le concept de "plectrum"
+
+Le plectrum est la couche d'attaque visuelle qui evite que le style devienne trop sage. Il se compose de 3 elements optionnels :
+
+1. **Strike point** (`signature.marks.strike`) : un seul point par image ou l'accent est plus intense que partout ailleurs. La violation maitrisee de la discipline lumiere, a un seul endroit, au point de tension maximale.
+
+2. **Tension mechanics** (`rendering.tension_mechanics`) : vocabulaire d'evenements visuels (rupture, transfer, emergence, collapse, resonance) qui donnent du mouvement narratif. Chaque image utilise au moins une mecanique.
+
+3. **Hostile void** (dans `composition.framing`) : l'espace negatif n'est pas passif — il agresse, il compresse, il menace la structure. La composition cree une tension entre le vide et le focal.
+
+### Exemples par genre
+
+| Genre | Plectrum possible |
+|-------|-------------------|
+| `scientific-abstract-visualization` | Strike point lumineux aux fractures, arcs incomplets, hostile void |
+| `ligne-claire-plus` | Un regard qui sort du cadre, une cassure dans le trait, un geste suspendu |
+| `flat-design` | Un element decentre qui brise la grille, un accent de couleur plus vif que les autres |
+| `concept-art` | Un point de lumiere surexpose, une diagonale de force, un contraste brutal localise |
+
+Le plectrum est specifique a chaque preset. Il ne peut pas etre auto-genere — c'est une decision creative de l'auteur du style guide.
+
+---
+
 ## Vocabulaire contrôlé pour `style.genre`
 
 Les valeurs suivantes sont **standards** et reconnues par le skill :
@@ -135,6 +188,7 @@ Les valeurs suivantes sont **standards** et reconnues par le skill :
 | `editorial-photo` | Photographie éditoriale | réaliste | real light/shadow, depth of field, textures |
 | `concept-art` | Concept art cinématographique | semi-réaliste | dramatic lighting, volumetric, atmospheric |
 | `flat-design` | Design plat, minimaliste | stylisé | no outlines, solid colors, geometric |
+| `scientific-abstract-visualization` | Visualisation scientifique abstraite premium | minimaliste | wireframe, vector, luminous on dark void |
 
 **Extension** : Un projet peut définir un genre custom en spécifiant :
 1. Valeur custom dans `style.genre` (ex: `"manga-éducatif"`)

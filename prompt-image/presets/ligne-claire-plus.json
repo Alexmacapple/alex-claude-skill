@@ -2,7 +2,26 @@
   "schema_version": "1.0",
   "id": "llm-council-feuilleton-s1",
   "project": "Feuilleton LLM Council",
-  "version": "2.1",
+  "version": "2.2",
+  "language_convention": "FR pour les meta-descriptions et notes d'usage, EN pour les tokens injectables dans les prompts IA",
+
+  "style_weight": {
+    "critical": ["ligne claire editorial", "clean black outlines", "flat colors dominant", "no photorealistic", "no anime", "polished editorial finish"],
+    "important": ["subtle localized shading", "variable weight outlines", "no heavy gradients", "no painterly texture", "face readability priority", "16:9 landscape"],
+    "flexible": ["shading depth on secondary elements", "warm vs cool lighting balance", "background detail level", "reflection intensity on glass and metal"],
+    "usage": "En cas de conflit entre regles, la priorite descend de critical vers flexible. Un pipeline peut sacrifier les flexible mais jamais les critical."
+  },
+
+  "shot_type": {
+    "default": "medium",
+    "options": {
+      "wide": "full scene visible, establishing shot, used for empty_aftermath and abstract_ai_concept compositions",
+      "medium": "subject with context, faces readable, used for round_table_discussion and strategic_duo",
+      "medium-wide": "wider framing with character context, used for speaker_addressing_council",
+      "close": "tight framing on face, maximum expression detail, used for emotional beats and character focus"
+    },
+    "usage": "Injecter le shot_type apres le sujet et avant les style modifiers. Voir aussi camera_policy pour les regles specifiques au feuilleton."
+  },
 
   "style": {
     "genre": "ligne-claire-plus",
@@ -55,7 +74,7 @@
     "hyperreal skin pores and uncanny photorealism"
   ],
 
-  "prompt_core": "Franco-belgian ligne claire editorial illustration, editorial semi-realism believable but clearly illustrated, clean black outlines with slightly variable weight, dominant flat colors with subtle localized shading, smooth polished finish, medium shot preferred, warm editorial atmosphere, 16:9 landscape.",
+  "prompt_core": "Franco-belgian ligne claire editorial illustration, editorial semi-realism believable but clearly illustrated, clean black outlines with slightly variable weight, dominant flat colors with subtle localized shading, smooth polished finish, warm editorial atmosphere.",
 
   "visual_signature": [
     "clean black contours with variable weight",
@@ -75,8 +94,7 @@
       "attention and listening",
       "skepticism and critical thinking",
       "collective intellectual presence"
-    ],
-    "recurring": []
+    ]
   },
 
   "camera_policy": {
@@ -282,7 +300,28 @@
     "detail_hierarchy": "sharp focus: faces and hands | medium focus: primary objects and spatial relationships | soft focus or simplified: background and decor"
   },
 
+  "negative_short": "photorealism, painterly texture, heavy shading, anime style, neon colors, speech bubbles, text in image, cluttered background, cartoon exaggeration, rough sketch feel",
+
   "negative_core": "photorealism, painterly texture, heavy shading, cartoon exaggeration, anime style, neon colors, speech bubbles, text in image, cluttered background, exotic visual overload, baroque ornament, rough sketch feel, muddy colors, hyperreal detail, visual clutter, distorted anatomy",
+
+  "negative_usage": "negative_short (10 termes) pour Midjourney et moteurs avec limite de tokens. negative_core (16 termes) pour SDXL, Flux et moteurs sans contrainte de longueur.",
+
+  "prompt_builder": {
+    "template": "[subject], [shot_type], [action or state], franco-belgian ligne claire editorial illustration, clean black outlines with slightly variable weight, dominant flat colors with subtle localized shading, smooth polished finish, [composition_template], [lighting_preset], [palette_template], [mood]",
+    "recommended_order": [
+      "subject",
+      "shot_type",
+      "action/state",
+      "style core (ligne claire, editorial, outlines, flat colors)",
+      "shading approach",
+      "composition template",
+      "lighting preset",
+      "palette template",
+      "mood/atmosphere",
+      "negative prompt"
+    ],
+    "usage_note": "Sujet en premier, puis cadrage, puis action. Les composition_templates, lighting_presets et palette_templates sont specifiques au feuilleton LLM Council."
+  },
 
   "quality_checkpoints": {
     "style_markers": [

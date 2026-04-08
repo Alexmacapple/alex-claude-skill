@@ -22,7 +22,7 @@ context: conversation
 |--------|---------|--------|-------------|
 | Concept brut | texte libre | (obligatoire) | Idée à transformer en prompt |
 | `--gen` | nano-banana, qwen | auto-détecté | Générateur cible |
-| `--style` | nom preset ou chemin | auto-détecté | Preset par nom (`tech-dark`, `ligne-claire-plus`) ou chemin vers un style-guide.json |
+| `--style` | nom preset ou chemin | auto-détecté | Preset par nom (`orbital-fracture`, `ligne-claire-plus`) ou chemin vers un style-guide.json |
 | `--intent` | editorial, cover, thumbnail, hero, storytelling, infographic | auto | Contexte d'utilisation |
 | `--niveau` | 1, 2, 3, 4 | auto | Complexité du prompt (sinon détecté) |
 | `--verbose` | (flag) | false | Afficher Prompt1, Prompt2 (debug) |
@@ -216,7 +216,7 @@ L'estimation des tokens est LLM-native : compter les mots du Prompt3 et multipli
 ### Résolution du style guide
 
 Recherche séquentielle, premier trouvé utilisé :
-1. `--style <nom-preset>` : chercher dans `presets/<nom>.json` du skill (ex: `--style tech-dark`)
+1. `--style <nom-preset>` : chercher dans `presets/<nom>.json` du skill (ex: `--style orbital-fracture`)
 2. `--style <chemin>` : chemin explicite vers un fichier JSON
 3. `style-guide.json` dans le répertoire de travail courant (`pwd`)
 4. Recherche ascendante : remonter les répertoires parents jusqu'à trouver `style-guide.json` (arrêt à `~/Claude/`)
@@ -229,8 +229,10 @@ Lister les presets : `ls presets/` dans le répertoire du skill.
 | Preset | Genre | Usage |
 |--------|-------|-------|
 | `ligne-claire-plus` | Ligne claire franco-belge rehaussée | Feuilletons éditoriaux, illustrations LinkedIn, séries narratives |
-| `tech-dark` | Concept art scientifique sur fond sombre | Posters de recherche, covers tech, visualisations data, projets API |
+| `orbital-fracture` | Geometrie orbitale fracturee, luminescence chirurgicale, void hostile | Posters scientifiques, covers tech, visualisations data, branding deeptech |
+| `bio-lumina` | Bioluminescence organique, architecture vegetale nocturne, pulsation vivante | Illustrations nature-tech, covers biotech, visuels nocturnes, branding organique |
 | `flat-design` | Illustration vectorielle minimaliste | Slides, infographies, dashboards, illustrations corporate, icones |
+| `whiteboard-sketch` | Diagramme whiteboard premium, faux-handmade controle, palette semantique | Blog engineering, docs techniques, explainers, posts LinkedIn, schemas architecture |
 
 Pour ajouter un preset : créer un fichier `presets/<nom>.json` conforme au schéma L0 (`references/schema-style-guide.md`).
 

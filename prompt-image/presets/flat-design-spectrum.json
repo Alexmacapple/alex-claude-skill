@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "id": "flat-design-v2.3",
-  "project": "Preset generique -- illustrations flat design modernes (version lite : palettes restreintes 4-6 couleurs)",
-  "version": "2.3",
+  "id": "flat-design-spectrum-v2.4",
+  "project": "Preset generique -- illustrations flat design modernes (variante spectrum : palettes etendues)",
+  "version": "2.4",
   "language_convention": "FR pour les meta-descriptions et notes d'usage, EN pour les tokens injectables dans les prompts IA",
 
   "style_weight": {
     "critical": ["flat design", "zero gradient", "solid color blocking", "geometric shapes", "no photorealistic", "no 3D render"],
-    "important": ["rounded soft corners", "simplified anatomy", "limited palette 4-6", "negative space", "no cinematic lighting", "white or light neutral background"],
-    "flexible": ["isometric vs frontal", "ambient shadow for separation", "number of accent colors within 4-6 range"],
+    "important": ["rounded soft corners", "simplified anatomy", "limited palette", "negative space", "no cinematic lighting"],
+    "flexible": ["isometric vs frontal", "spectrum mode vs default palette", "ambient shadow for separation", "tinted background vs pure white"],
     "usage": "En cas de conflit entre regles, la priorite descend de critical vers flexible. Un pipeline peut sacrifier les flexible mais jamais les critical."
   },
 
@@ -46,7 +46,7 @@
     "color": [
       "bold solid color blocking with curated palette",
       "complementary or analogous harmonious hues",
-      "limited palette of 4-6 confident tones",
+      "default palette of 4-6 confident tones, extended to 8 in spectrum mode (see color_policy.spectrum)",
       "no muddy colors, no excessive saturation conflict",
       "white or light neutral background as default"
     ],
@@ -179,18 +179,34 @@
       "purple and yellow-green",
       "green and cream",
       "terracotta and cream",
-      "any 4-6 color harmony"
+      "any 5-8 color harmony"
     ],
+    "spectrum": {
+      "description": "Richesse chromatique elargie -- plus de couleurs distinctes par scene, transitions de teintes entre elements adjacents, palette vivante sans quitter le flat",
+      "rules": [
+        "up to 8 distinct flat color blocks per image instead of 4-6",
+        "adjacent elements can use neighboring hues on the color wheel for natural spectrum flow",
+        "each major element gets its own confident color -- no two main shapes share the same tone",
+        "background can shift from pure white to very light tinted (pale lavender, pale mint, pale peach) to add warmth"
+      ],
+      "spectrum_palettes": [
+        "sunrise: coral, amber, warm pink, soft yellow, light peach background",
+        "ocean: teal, deep blue, aqua, seafoam green, pale cyan background",
+        "garden: sage green, terracotta, soft purple, golden yellow, cream background",
+        "aurora: purple, electric blue, teal, magenta, soft pink, pale lavender background",
+        "sunset: deep coral, burnt orange, warm red, golden, soft peach background"
+      ]
+    },
     "forbidden": [
-      "gradients of any kind",
+      "gradients within a single shape (flat blocks only)",
       "neon overload",
       "dark moody palettes",
       "muddy or conflicting saturations"
     ],
     "contrast_rules": [
       "preserve sufficient contrast between foreground and background",
-      "use accent color sparingly for focus",
-      "avoid adjacent tones with weak separation"
+      "more colors means more discipline -- every color must earn its place",
+      "spectrum flow creates visual rhythm, not chaos"
     ]
   },
 
@@ -202,7 +218,8 @@
       "calm informational",
       "playful but restrained",
       "polished and sophisticated",
-      "visually calm and intentional"
+      "visually calm and intentional",
+      "vibrant spectrum richness"
     ],
     "forbidden": [
       "dramatic tension",
@@ -217,7 +234,7 @@
     "invariants": [
       "zero gradients, minimal shadows",
       "geometric shapes with soft corners",
-      "limited palette per image",
+      "controlled palette per image (4-6 default, up to 8 in spectrum mode)",
       "white or light background",
       "flat frontal or isometric perspective",
       "vector-like scalable aesthetic"
@@ -259,7 +276,9 @@
     "icon": "[app icon subject], flat design, minimalistic, vector art, line art, iconic, [colors]",
     "poster": "[poster subject], flat design, minimalistic, vector art, bold shapes, iconic, [color palette]",
     "character": "[character description], flat design, minimalistic, vector art, rounded geometric silhouette, simplified proportions, [color palette]",
-    "infographic": "[data subject], flat design, minimalistic, vector art, clean modular layout, iconic, [color palette]"
+    "infographic": "[data subject], flat design, minimalistic, vector art, clean modular layout, iconic, [color palette]",
+    "spectrum_hero": "[subject], flat design, minimalistic, vector art, iconic, premium 2D illustration, bold solid color blocking, 8 distinct flat color tones, sunrise palette (coral, amber, warm pink, soft yellow), light peach background, elegant negative space",
+    "spectrum_scene": "[scene with characters], flat design, minimalistic, vector art, iconic, clean shapes, spectrum palette ocean (teal, deep blue, aqua, seafoam green), pale cyan background, adjacent hues flowing naturally between elements"
   },
 
   "prompt_builder": {
