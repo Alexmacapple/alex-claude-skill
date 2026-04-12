@@ -1,0 +1,13 @@
+Tâche : évaluer la qualité du skill « {TARGET} » via le skill skill-review du workspace Claude.
+
+Instructions strictes :
+1. Invoque le skill skill-review via l'outil Skill (skill="skill-review" args="{TARGET}"). La cible se trouve à .claude/skills/{TARGET}/SKILL.md et les grilles de notation à .claude/skills/skill-review/references/grilles.md.
+2. Laisse le skill produire son rapport complet selon sa grille interne.
+3. Extrais le score global du rapport (ligne « Score global : X/100 » ou équivalent).
+4. Ta réponse finale DOIT être UNIQUEMENT une seule ligne au format EXACT :
+
+SCORE: NN/100
+
+où NN est le score global chiffré. Aucun commentaire, aucun tableau, aucune justification, aucune ligne supplémentaire, aucun préambule, aucun résumé.
+
+Contrat d'output : ta réponse finale = une seule ligne qui match la regex ^SCORE: \d{1,3}/100$. Si tu dévies, le parser amont rejettera ton output et la mesure sera perdue.

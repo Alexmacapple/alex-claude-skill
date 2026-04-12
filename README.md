@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 11 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 12 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -52,6 +52,19 @@ Cartographie les certitudes, incertitudes, biais et angles morts d'un projet sel
 ```
 
 Verdict : Prêt / Prêt sous conditions / Pas prêt.
+
+---
+
+### /eval-robuste — Évaluation anti-bruit
+
+Mesure la variance d'un évaluateur stochastique (skill-review par défaut) en lançant N runs parallèles, agrège les scores via un script déterministe et rend un verdict qui distingue bruit de vraie régression. Archivage de baselines pour comparaison.
+
+```
+/eval-robuste pedagogie-neuro --n=5
+/eval-robuste mon-skill --compare-to=baseline.json
+```
+
+Inclut 6 scripts Python (agrégation, parsing, hash, rotation) et 42 tests unitaires.
 
 ---
 
