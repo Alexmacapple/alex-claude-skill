@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 14 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 18 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -151,6 +151,50 @@ Transforme un mot vague en palette de graines sémantiques multilingues. 3 mouve
 ```
 
 Dictionnaires archivés dans `dictionnaires/` pour calibrer les futures explorations (boucle cumulative).
+
+---
+
+### /skill-conformity-checker — Validation structurelle de skills
+
+Vérifie la conformité structurelle d'un SKILL.md par parsing déterministe (pas de LLM) : frontmatter, nommage, liens, critères SkillsBench. Score max 65 pts (50 Anthropic + 15 SkillsBench).
+
+```
+/skill-conformity-checker pedagogie-neuro
+```
+
+---
+
+### /skill-creator — Création de skills
+
+Guide de création de skills avec templates, design patterns et scripts d'initialisation. Génère un squelette SKILL.md conforme aux conventions du workspace.
+
+```
+/skill-creator mon-nouveau-skill
+```
+
+---
+
+### /skill-pipeline — Cycle de vie complet des skills
+
+Orchestre le cycle de vie d'un skill : création, validation structurelle (conformity-checker /65), évaluation sémantique (skill-review /100), pressure testing. Pipeline complet ou phases individuelles.
+
+```
+/skill-pipeline mon-skill --create
+/skill-pipeline mon-skill --review
+/skill-pipeline mon-skill --full
+```
+
+---
+
+### /skill-review — Évaluation sémantique de skills
+
+Évalue un skill contre une grille structurée /100 : frontmatter, déclencheurs, workflow, contraintes, checklist, cohérence, conformité Anthropic (Q01-Q07). Produit un rapport détaillé avec score et actions correctives.
+
+```
+/skill-review pedagogie-neuro
+```
+
+**3 fichiers de référence** : grilles de notation (skill, rule, agent), scénarios de pressure testing, classification des skills.
 
 ---
 
