@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 13 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 14 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -40,6 +40,18 @@ Compresse un texte par injection itérative d'entités manquantes selon la méth
 ```
 
 Inclut un script `text_metrics.py` pour mesurer la densité informationnelle et les références complètes du papier.
+
+---
+
+### /claude-code-veille — Veille Claude Code
+
+Veille, référence et migration Claude Code. 3 modes : veille (changelog filtré par pertinence), référence (fiche sur un sujet précis), migration (impact d'une mise à jour sur le workflow). Grille de pertinence et catalogue de sujets inclus.
+
+```
+/claude-code-veille veille
+/claude-code-veille reference hooks
+/claude-code-veille migration
+```
 
 ---
 
