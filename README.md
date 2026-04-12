@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 12 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 13 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -139,6 +139,16 @@ Transforme un mot vague en palette de graines sémantiques multilingues. 3 mouve
 ```
 
 Dictionnaires archivés dans `dictionnaires/` pour calibrer les futures explorations (boucle cumulative).
+
+---
+
+### /to-skill-or-not-to-skill — Arbre de décision skill
+
+Applique un arbre de décision à 13 points avant toute création de skill. Verdict : Go / Reformuler / Pas de skill. Si verdict négatif, propose une alternative concrète (rule, instruction, guide, runbook, rien) avec squelette.
+
+```
+/to-skill-or-not-to-skill "détection automatique de code mort"
+```
 
 ---
 
