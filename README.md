@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 10 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 11 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -81,6 +81,17 @@ Génère des prompts où le LLM EST le concept plutôt qu'un expert DU concept. 
 
 ```
 /meta-prompt-concept — incarne le concept de dette technique
+```
+
+---
+
+### /prd — Création et gestion de PRD
+
+Crée et gère des Product Requirements Documents avec workflow standardisé : numérotation automatique, template structuré (vision, problème, solution, options, décision, plan, métriques, risques), validation croisée optionnelle (connu-inconnu + avocat-du-diable), backlog centralisé.
+
+```
+/prd "système de notifications push"
+/prd --list
 ```
 
 ---
