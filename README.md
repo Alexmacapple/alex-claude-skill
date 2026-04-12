@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 7 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 9 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -79,6 +79,29 @@ Applique 26 règles de neuropédagogie pour concevoir ou améliorer un contenu p
 ```
 /pedagogie-neuro — améliore ces slides de formation
 ```
+
+---
+
+### /prompt-image — Raffinement de prompts image
+
+Pipeline de raffinement progressif pour prompts de génération d'image. Transforme une idée brute en prompt optimisé, contraint par un style guide et adapté au générateur cible.
+
+```
+/prompt-image — un paysage de montagne enneigé au coucher du soleil
+```
+
+---
+
+### /lexique-precis — Exploration lexicale pour prompts IA
+
+Transforme un mot vague en palette de graines sémantiques multilingues. 3 mouvements : cartographie des registres (courant, soutenu, technique, étranger, savant), pépites rares, graines de prompts actionnables. Chaque terme est classé `[attesté]` ou `[construction proposée]`.
+
+```
+/lexique-precis "analyser"
+/lexique-precis "prendre de la hauteur"
+```
+
+Dictionnaires archivés dans `dictionnaires/` pour calibrer les futures explorations (boucle cumulative).
 
 ---
 
