@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 18 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 19 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -40,6 +40,19 @@ Compresse un texte par injection itérative d'entités manquantes selon la méth
 ```
 
 Inclut un script `text_metrics.py` pour mesurer la densité informationnelle et les références complètes du papier.
+
+---
+
+### /chain-of-summaries-cos — Résumé itératif dialectique
+
+Résumé itératif via Chain of Summaries (Brach & Kostal 2026, arXiv 2511.15719v2). Raffine un résumé par cycle thèse-antithèse-synthèse guidé par questions synthétiques. Détecte les lacunes factuelles et les comble à chaque passe.
+
+```
+/cos document.md
+/cos document.md --langue en
+```
+
+Complémentaire à `/chain-of-density` (densification) : COS vise la couverture des entités, CoD vise la compression.
 
 ---
 
