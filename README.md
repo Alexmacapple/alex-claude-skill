@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 9 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 10 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -27,6 +27,19 @@ Revue critique qui force le steel-man avant la critique, applique des cadres de 
 ```
 
 **3 fichiers de référence** : cadres de questionnement (Klein, Munger, de Bono), angles morts ingénierie (11 catégories), angles morts IA (12 schémas de défaillance).
+
+---
+
+### /chain-of-density — Densification itérative de résumés
+
+Compresse un texte par injection itérative d'entités manquantes selon la méthode Chain-of-Density (arXiv 2309.04269). Chaque passe identifie les entités absentes de la source et les incorpore en maintenant un nombre de mots identique.
+
+```
+/chain-of-density document.md
+/chain-of-density document.md --iterations 5 --mots-cibles 80
+```
+
+Inclut un script `text_metrics.py` pour mesurer la densité informationnelle et les références complètes du papier.
 
 ---
 
