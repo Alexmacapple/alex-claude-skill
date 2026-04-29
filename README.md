@@ -1,6 +1,6 @@
 # Skills Claude Code — Alex
 
-Collection de 19 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
+Collection de 20 skills personnels pour Claude Code. Chaque skill est un workflow structuré invocable par slash command.
 
 ## Installation
 
@@ -232,6 +232,21 @@ Revue de code basée sur le papier Meta « Agentic Code Reasoning » (arXiv 2603
 ```
 
 **3 templates de référence** alignés sur les appendices A, B et D du papier : prémisses numérotées, claims formels, format d'exploration agentic.
+
+---
+
+### /readme-causal — README structuré en chaîne causale
+
+Génère un README en 4 mouvements qui documente le POURQUOI d'un projet, pas seulement le QUOI/COMMENT. Fouille git log, README existant et structure de fichiers pour reconstituer la chaîne causale qui a rendu le projet inévitable.
+
+```
+/readme-causal
+/readme-causal /chemin/vers/projet/
+```
+
+**4 mouvements** : Anamèse (histoire du problème), Étiologie (kairos + nécessitation), Ossature causale (architecture liée aux contraintes), Résidu (exclusions assumées et dettes tracées). Chaque assertion porte un marqueur de confiance [IC]/[IE]/[FA]/[INC].
+
+**2 fichiers de référence** : lexique causal, exemples annotés (json-normalizer, voice-transcript).
 
 ---
 
